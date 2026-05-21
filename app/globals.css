@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Tailwind utilities backed by CSS vars */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand-specific utilities */
+  --color-ink: var(--brand-ink);
+  --color-ink-soft: var(--brand-ink-soft);
+  --color-line: var(--brand-line);
+  --color-highlight: var(--brand-highlight);
+  --color-surface: var(--brand-surface);
+
+  /* Typography */
+  --font-display: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Radii — 4px for buttons, 8px for cards */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+:root {
+  /* === Brand palette (light / warm paper) === */
+
+  /* Page + surface */
+  --background: #f8f7f3;    /* warm paper */
+  --foreground: #1e293b;    /* ink */
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --popover: #ffffff;
+  --popover-foreground: #1e293b;
+
+  /* Structural colour: slate */
+  --primary: #334155;
+  --primary-foreground: #f8f7f3;
+  --primary-hover: #253040;
+
+  /* Secondary tones */
+  --secondary: #eeeae4;
+  --secondary-foreground: #1e293b;
+  --muted: #eeeae4;
+  --muted-foreground: #78716c;
+  --accent: #e8e4de;
+  --accent-foreground: #1e293b;
+
+  /* Destructive: warm brown-red (not bright red, per guidelines) */
+  --destructive: #8b2e2e;
+
+  /* Dividers and inputs */
+  --border: #e4e4df;
+  --input: #e4e4df;
+
+  /* Focus ring: copper */
+  --ring: #a0522d;
+
+  /* Corner radius reference */
+  --radius: 0.5rem;
+
+  /* === Brand-specific tokens === */
+  --brand-ink: #1e293b;
+  --brand-ink-soft: #475569;
+  --brand-muted: #78716c;
+  --brand-line: #e4e4df;
+  --brand-highlight: #a0522d;   /* copper */
+  --brand-surface: #ffffff;
+}
+
+[data-theme="dim"] {
+  --background: #1f1b16;
+  --foreground: #f2ece0;
+  --card: #2a241e;
+  --card-foreground: #f2ece0;
+  --popover: #2a241e;
+  --popover-foreground: #f2ece0;
+  --primary: #c4804f;
+  --primary-foreground: #1f1b16;
+  --primary-hover: #a86d3e;
+  --secondary: #2e2924;
+  --secondary-foreground: #cfc6b6;
+  --muted: #2e2924;
+  --muted-foreground: #8a8172;
+  --accent: #342d27;
+  --accent-foreground: #f2ece0;
+  --destructive: #a04040;
+  --border: #2e2924;
+  --input: #2e2924;
+  --ring: #d49366;
+  --brand-ink: #f2ece0;
+  --brand-ink-soft: #cfc6b6;
+  --brand-muted: #8a8172;
+  --brand-line: #2e2924;
+  --brand-highlight: #d49366;
+  --brand-surface: #2a241e;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
