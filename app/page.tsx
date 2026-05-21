@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Server, Shield } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
@@ -98,6 +99,51 @@ export default function Home() {
                 </p>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* About */}
+        <section className="border-t border-line py-16">
+          <div className="max-w-4xl mx-auto px-8">
+            <h2 className="text-[11px] font-medium uppercase tracking-widest mb-10 text-ink-soft">
+              About
+            </h2>
+            <div className="grid md:grid-cols-[200px_1fr] gap-12 items-start">
+              <div className="flex flex-col items-start gap-4">
+                <Image
+                  src="/roger-foxcroft.jpg"
+                  alt="Roger Foxcroft, founder of Softfox Ltd"
+                  width={200}
+                  height={240}
+                  className="w-full rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
+                />
+                <div>
+                  <p className="text-[15px] font-semibold text-ink leading-tight">Roger Foxcroft</p>
+                  <p className="text-[13px] text-ink-soft mt-0.5">Founder, Softfox Ltd</p>
+                </div>
+              </div>
+              <div className="space-y-5">
+                <p className="text-[16px] text-ink-soft leading-relaxed">
+                  Softfox Ltd was founded by Roger Foxcroft, a senior technology
+                  and transformation leader with more than two decades of
+                  experience delivering complex digital platforms, engineering
+                  strategy, and organisational change for global brands and
+                  growing businesses alike. Combining deep technical expertise
+                  with a practical, people-first mindset, Softfox helps
+                  organisations modernise delivery, embrace AI-enabled ways of
+                  working, and build technology that genuinely supports business
+                  growth.
+                </p>
+                <p className="text-[16px] text-ink-soft leading-relaxed">
+                  At Softfox, we believe progress matters most when it carries
+                  people with it. Whether supporting digital transformation,
+                  software architecture, delivery leadership, or emerging AI
+                  workflows, our focus is always on creating sustainable change
+                  that improves both business outcomes and the experience of the
+                  people behind them.
+                </p>
+              </div>
             </div>
           </div>
         </section>
