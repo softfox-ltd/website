@@ -20,27 +20,48 @@ export default function Home() {
 
       <main>
         {/* Hero */}
-        <section className="py-20 max-w-4xl mx-auto px-8">
-          <p
-            className="text-[11px] font-medium uppercase tracking-widest mb-6"
-            style={{ color: 'var(--brand-highlight)' }}
+        <section className="relative overflow-hidden">
+          {/* Fox illustration — decorative, desktop only */}
+          <div
+            className="absolute inset-0 hidden md:block pointer-events-none select-none"
+            aria-hidden="true"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent 20%, black 52%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 20%, black 52%)',
+            }}
           >
-            Softfox Ltd
-          </p>
-          <h1 className="text-4xl font-semibold text-ink leading-tight mb-6 max-w-2xl">
-            Considered IT consultancy for growing organisations.
-          </h1>
-          <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-xl">
-            We help small and medium-sized businesses get more from their
-            technology — from infrastructure and cloud strategy to day-to-day
-            support.
-          </p>
-          <a
-            href="mailto:hello@softfox.com"
-            className="inline-flex items-center justify-center h-10 px-5 rounded-[4px] bg-primary text-primary-foreground text-[13px] font-medium hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            Get in touch
-          </a>
+            <Image
+              src="/softfox-fox.png"
+              alt=""
+              fill
+              className="object-cover object-right-top"
+              priority
+            />
+          </div>
+
+          {/* Content */}
+          <div className="relative max-w-4xl mx-auto px-8 py-20">
+            <p
+              className="text-[11px] font-medium uppercase tracking-widest mb-6"
+              style={{ color: 'var(--brand-highlight)' }}
+            >
+              Softfox Ltd
+            </p>
+            <h1 className="text-4xl font-semibold text-ink leading-tight mb-6 max-w-[480px]">
+              Considered IT consultancy for growing organisations.
+            </h1>
+            <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-[420px]">
+              We help small and medium-sized businesses get more from their
+              technology — from infrastructure and cloud strategy to day-to-day
+              support.
+            </p>
+            <a
+              href="mailto:hello@softfox.com"
+              className="inline-flex items-center justify-center h-10 px-5 rounded-[4px] bg-primary text-primary-foreground text-[13px] font-medium hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Get in touch
+            </a>
+          </div>
         </section>
 
         {/* What we do */}
