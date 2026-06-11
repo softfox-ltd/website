@@ -18,7 +18,8 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: 'Softfox',
-  description: 'IT consultancy for small and medium-sized organisations.',
+  description:
+    'Softfox Ltd is a small IT consultancy for small businesses, and the maker of Safeguard — practical technology help, without the jargon.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

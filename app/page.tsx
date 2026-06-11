@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Server, Shield } from 'lucide-react';
+import { Server, Shield, ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
 export default function Home() {
@@ -47,13 +47,13 @@ export default function Home() {
             >
               Softfox Ltd
             </p>
-            <h1 className="text-4xl font-semibold text-ink leading-tight mb-6 max-w-[480px]">
-              Considered IT consultancy for growing organisations.
+            <h1 className="text-4xl font-semibold text-ink leading-tight mb-6 max-w-[500px]">
+              Making good technology genuinely useful for small organisations.
             </h1>
-            <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-[420px]">
-              We help small and medium-sized businesses get more from their
-              technology — from infrastructure and cloud strategy to day-to-day
-              support.
+            <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-[440px]">
+              Softfox is a small IT consultancy that helps small businesses
+              solve real problems — without the jargon or the oversell.
+              Alongside that work, we build our own products.
             </p>
             <a
               href="mailto:hello@softfox.com"
@@ -67,9 +67,13 @@ export default function Home() {
         {/* What we do */}
         <section className="border-t border-line py-16">
           <div className="max-w-4xl mx-auto px-8">
-            <h2 className="text-[11px] font-medium uppercase tracking-widest mb-10 text-ink-soft">
+            <h2 className="text-[11px] font-medium uppercase tracking-widest mb-4 text-ink-soft">
               What we do
             </h2>
+            <p className="text-[16px] text-ink-soft leading-relaxed mb-10 max-w-xl">
+              Softfox Ltd has two sides: consultancy work with small businesses,
+              and the products we build ourselves.
+            </p>
             <div className="grid md:grid-cols-2 gap-6">
 
               {/* IT Consultancy card */}
@@ -80,44 +84,54 @@ export default function Home() {
                 >
                   <Server size={18} className="text-primary" strokeWidth={1.5} />
                 </div>
+                <p
+                  className="text-[11px] font-medium uppercase tracking-wider mb-3"
+                  style={{ color: 'var(--brand-highlight)' }}
+                >
+                  Consultancy
+                </p>
                 <h3 className="text-xl font-semibold text-ink mb-3">
-                  IT Consultancy
+                  IT consultancy for small businesses
                 </h3>
                 <p className="text-[15px] text-ink-soft leading-relaxed">
-                  We work with small and medium-sized organisations as a trusted
-                  technology partner — helping with infrastructure, cloud
-                  strategy, systems integration, and ongoing support. No
-                  overhead, no jargon.
+                  We work with small organisations as a trusted technology
+                  partner — the kind of help where the right software, a clearer
+                  process, or a well-built tool makes day-to-day work noticeably
+                  easier. We care about doing things properly: sensible
+                  architecture, security taken seriously, and solutions you can
+                  actually maintain.
                 </p>
               </div>
 
               {/* Safeguard card */}
               <div className="bg-card border border-line rounded-lg p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                <div className="flex items-start justify-between mb-6">
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: 'var(--secondary)' }}
-                  >
-                    <Shield size={18} className="text-primary" strokeWidth={1.5} />
-                  </div>
-                  <span
-                    className="text-[11px] font-medium uppercase tracking-wider px-2 py-1 rounded-sm"
-                    style={{
-                      backgroundColor: 'color-mix(in srgb, var(--brand-highlight) 12%, transparent)',
-                      color: 'var(--brand-highlight)',
-                    }}
-                  >
-                    Coming soon
-                  </span>
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-6"
+                  style={{ backgroundColor: 'var(--secondary)' }}
+                >
+                  <Shield size={18} className="text-primary" strokeWidth={1.5} />
                 </div>
+                <p
+                  className="text-[11px] font-medium uppercase tracking-wider mb-3"
+                  style={{ color: 'var(--brand-highlight)' }}
+                >
+                  Our first product
+                </p>
                 <h3 className="text-xl font-semibold text-ink mb-3">
                   Safeguard
                 </h3>
-                <p className="text-[15px] text-ink-soft leading-relaxed">
-                  Safeguarding management software for voluntary youth
-                  performing arts and sports groups. Built to help leaders keep
-                  minors safe, records accurate, and trustees confident.
+                <p className="text-[15px] text-ink-soft leading-relaxed mb-5">
+                  A platform that helps voluntary youth performing-arts and
+                  sports groups manage safeguarding and the child performance
+                  licensing that comes with putting on shows.
                 </p>
+                <a
+                  href="https://safeguard.softfox.com"
+                  className="inline-flex items-center gap-1 text-[14px] font-medium text-primary hover:text-primary-hover transition-colors"
+                >
+                  Visit safeguard.softfox.com
+                  <ArrowRight size={15} strokeWidth={1.75} />
+                </a>
               </div>
 
             </div>
@@ -146,23 +160,20 @@ export default function Home() {
               </div>
               <div className="space-y-5">
                 <p className="text-[16px] text-ink-soft leading-relaxed">
-                  Softfox Ltd was founded by Roger Foxcroft, a senior technology
-                  and transformation leader with more than two decades of
-                  experience delivering complex digital platforms, engineering
-                  strategy, and organisational change for global brands and
-                  growing businesses alike. Combining deep technical expertise
-                  with a practical, people-first mindset, Softfox helps
-                  organisations modernise delivery, embrace AI-enabled ways of
-                  working, and build technology that genuinely supports business
-                  growth.
+                  Softfox Ltd was founded by Roger Foxcroft, who has spent more
+                  than two decades building and leading technology teams —
+                  delivering software platforms, engineering strategy, and
+                  change for organisations large and small. Softfox brings that
+                  experience to small businesses, with a practical, people-first
+                  approach and no jargon.
                 </p>
                 <p className="text-[16px] text-ink-soft leading-relaxed">
-                  At Softfox, we believe progress matters most when it carries
-                  people with it. Whether supporting digital transformation,
-                  software architecture, delivery leadership, or emerging AI
-                  workflows, our focus is always on creating sustainable change
-                  that improves both business outcomes and the experience of the
-                  people behind them.
+                  The same care goes into the products we build — starting with
+                  Safeguard, which helps voluntary youth groups manage
+                  safeguarding and child performance licensing. Whether it&rsquo;s
+                  consultancy or our own software, the aim is the same: good
+                  technology, done properly, that genuinely supports the people
+                  who rely on it.
                 </p>
               </div>
             </div>
@@ -173,11 +184,12 @@ export default function Home() {
         <section className="border-t border-line py-16 bg-card">
           <div className="max-w-4xl mx-auto px-8">
             <h2 className="text-3xl font-semibold text-ink mb-4">
-              Work with us.
+              Let&rsquo;s talk.
             </h2>
             <p className="text-[16px] text-ink-soft leading-relaxed mb-8 max-w-md">
-              We&rsquo;d like to hear about your organisation and what you&rsquo;re
-              trying to achieve.
+              We&rsquo;re open to new consultancy clients and always happy to
+              hear about your organisation and what you&rsquo;re trying to
+              achieve. No hard sell.
             </p>
             <a
               href="mailto:hello@softfox.com"
