@@ -2,6 +2,12 @@ import Image from 'next/image';
 import { Server, Shield, ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
+// Softfox Ltd's Cyber Essentials certificate on the Blockmark registry. The
+// certificate page is the public verification record; the widget URL renders
+// the registry's live smart badge (transparent theme, tooltip on hover).
+const CE_CERTIFICATE_URL = 'https://registry.blockmarktech.com/certificates/6ae09d98-aa88-45d3-b7c9-803ebbbdaf1d/';
+const CE_BADGE_WIDGET_URL = `${CE_CERTIFICATE_URL}widget/?tooltip_position=bottom_right&theme=transparent&hover=t`;
+
 export default function Home() {
   return (
     <>
@@ -98,8 +104,16 @@ export default function Home() {
                   partner — the kind of help where the right software, a clearer
                   process, or a well-built tool makes day-to-day work noticeably
                   easier. We care about doing things properly: sensible
-                  architecture, security taken seriously, and solutions you can
-                  actually maintain.
+                  architecture, security taken seriously (Softfox is{' '}
+                  <a
+                    href={CE_CERTIFICATE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary-hover underline underline-offset-2 transition-colors"
+                  >
+                    Cyber Essentials certified
+                  </a>
+                  ), and solutions you can actually maintain.
                 </p>
               </div>
 
@@ -157,6 +171,30 @@ export default function Home() {
                   <p className="text-[15px] font-semibold text-ink leading-tight">Roger Foxcroft</p>
                   <p className="text-[13px] text-ink-soft mt-0.5">Founder, Softfox Ltd</p>
                 </div>
+                {/* Cyber Essentials smart badge (Blockmark). The registry's own
+                    widget verifies the certificate live; the transparent theme
+                    sits on the paper background without a white box. 132px is
+                    the widget's minimum. Keep the IASME mark as issued — never
+                    recolour or restyle it. */}
+                <div className="flex flex-col items-start gap-2">
+                  <iframe
+                    src={CE_BADGE_WIDGET_URL}
+                    title="Cyber Essentials certified — verified by Blockmark"
+                    style={{ border: 'none', height: 132, width: 132 }}
+                    loading="lazy"
+                  />
+                  <p className="text-[13px] text-ink-soft">
+                    Cyber Essentials certified ·{' '}
+                    <a
+                      href={CE_CERTIFICATE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary-hover underline underline-offset-2 transition-colors"
+                    >
+                      Verify
+                    </a>
+                  </p>
+                </div>
               </div>
               <div className="space-y-5">
                 <p className="text-[16px] text-ink-soft leading-relaxed">
@@ -206,7 +244,15 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <Logo size={16} />
           <p className="text-[13px] text-ink-soft">
-            &copy; 2026 Softfox Ltd. Registered in England and Wales.
+            &copy; 2026 Softfox Ltd. Registered in England and Wales. ·{' '}
+            <a
+              href={CE_CERTIFICATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-ink underline underline-offset-2 transition-colors"
+            >
+              Cyber Essentials certified
+            </a>
           </p>
         </div>
       </footer>
