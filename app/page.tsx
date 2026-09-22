@@ -244,7 +244,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <Logo size={16} />
           <p className="text-[13px] text-ink-soft">
-            &copy; 2026 Softfox Ltd. Registered in England and Wales. ·{' '}
+            &copy; 2026 Softfox Ltd. Registered in England and Wales, company number 17237777. ·{' '}
             <a
               href={CE_CERTIFICATE_URL}
               target="_blank"
