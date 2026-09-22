@@ -58,7 +58,8 @@ export default function Home() {
             </h1>
             <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-[440px]">
               Softfox is a small IT consultancy that helps small businesses
-              solve real problems — without the jargon or the oversell.
+              get real value from technology: clearer processes, better
+              visibility of how things are running, and room to grow.
               Alongside that work, we build our own products.
             </p>
             <a
