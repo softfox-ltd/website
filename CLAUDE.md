@@ -28,5 +28,4 @@ GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys to GitHub Pag
 
 ## Placeholder values to update before launch
 - Email: `hello@softfox.com` — grep-replace when confirmed
-- Company registration number: currently absent from footer — add when known
 - Safeguard card: remove "Coming soon" badge and add product URL when released
