@@ -199,12 +199,12 @@ export default function Home() {
               </div>
               <div className="space-y-5">
                 <p className="text-[16px] text-ink-soft leading-relaxed">
-                  Softfox Ltd was founded by Roger Foxcroft, who has spent more
-                  than two decades building and leading technology teams —
+                  Softfox Ltd was founded by Roger Foxcroft, who has spent three
+                  decades building and leading technology teams &mdash;
                   delivering software platforms, engineering strategy, and
                   change for organisations large and small. Softfox brings that
-                  experience to small businesses, with a practical, people-first
-                  approach and no jargon.
+                  experience to small businesses with a practical, people-first
+                  approach, explained in plain terms.
                 </p>
                 <p className="text-[16px] text-ink-soft leading-relaxed">
                   The same care goes into the products we build — starting with
@@ -228,7 +228,7 @@ export default function Home() {
             <p className="text-[16px] text-ink-soft leading-relaxed mb-8 max-w-md">
               We&rsquo;re open to new consultancy clients and always happy to
               hear about your organisation and what you&rsquo;re trying to
-              achieve. No hard sell.
+              achieve. A conversation is the best place to start.
             </p>
             <a
               href="mailto:hello@softfox.com"
