@@ -14,11 +14,11 @@ export const CONTACT_EMAIL = 'hello@softfox.com';
 export const CONTACT_FORM_ON = process.env.NEXT_PUBLIC_CONTACT_FORM === 'on';
 export const CONTACT_HREF = CONTACT_FORM_ON ? '/contact/' : `mailto:${CONTACT_EMAIL}`;
 
-// The contact form's Turnstile site key (public; infra/terraform's
-// turnstile_site_key output, set as the repo variable TURNSTILE_SITE_KEY).
-// Without it, Cloudflare's always-pass test key, for local work only.
+// The contact form's Turnstile site key: public, infra/terraform's
+// turnstile_site_key output. Locally, NEXT_PUBLIC_TURNSTILE_SITE_KEY sets
+// Cloudflare's always-pass test key instead (infra/terraform/README.md).
 export const TURNSTILE_SITE_KEY =
-  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAGSULrzNm0jYp7Rw';
 
 export const FREEMAN_CLARKE_URL = 'https://freemanclarke.com/';
 export const FREEMAN_CLARKE_REGION = 'Freeman Clarke West Midlands';

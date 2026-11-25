@@ -49,11 +49,38 @@ resource "cloudflare_pages_project" "site" {
   name              = "softfox"
   production_branch = "main"
 
-  # wrangler records the output folder (wrangler.toml's
-  # pages_build_output_dir) on the project when it deploys. It doesn't matter
-  # for direct upload; ignoring it stops every plan from undoing it.
+  # The contact form Function's secrets, for the live site and previews:
+  # Turnstile's from the widget below, Resend's from the GitHub secret
+  # RESEND_API_KEY (via TF_VAR_resend_api_key in terraform.yml). Plain
+  # settings (FROM, NOTIFY_TO, PREVIEW) stay in wrangler.toml.
+  deployment_configs {
+    production {
+      compatibility_date = "2026-10-19" # as wrangler.toml
+      secrets = {
+        RESEND_API_KEY   = var.resend_api_key
+        TURNSTILE_SECRET = cloudflare_turnstile_widget.contact.secret
+      }
+    }
+    preview {
+      compatibility_date = "2026-10-19"
+      secrets = {
+        RESEND_API_KEY   = var.resend_api_key
+        TURNSTILE_SECRET = cloudflare_turnstile_widget.contact.secret
+      }
+    }
+  }
+
+  # wrangler.toml is the source of truth for everything but the secrets: each
+  # deploy writes its output folder, vars (FROM, NOTIFY_TO, PREVIEW) and
+  # usage model onto the project. Ignoring them stops every plan undoing that.
   lifecycle {
-    ignore_changes = [build_config]
+    ignore_changes = [
+      build_config,
+      deployment_configs[0].production[0].environment_variables,
+      deployment_configs[0].production[0].usage_model,
+      deployment_configs[0].preview[0].environment_variables,
+      deployment_configs[0].preview[0].usage_model,
+    ]
   }
 }
 
@@ -62,7 +89,7 @@ resource "cloudflare_pages_project" "site" {
 resource "cloudflare_turnstile_widget" "contact" {
   account_id = var.cloudflare_account_id
   name       = "softfox.com contact form"
-  domains    = ["softfox.com", "www.softfox.com", cloudflare_pages_project.site.subdomain]
+  domains    = ["softfox.com", "www.softfox.com", "softfox.pages.dev"] # the project's subdomain; spelled out, as the project needs this widget's secret
   mode       = "managed"
   region     = "world"
 }

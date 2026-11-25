@@ -30,6 +30,7 @@ jobs:
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       TF_VAR_cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }} # an ID, not a secret
+      TF_VAR_resend_api_key: ${{ secrets.RESEND_API_KEY }}
     steps:
       - uses: actions/checkout@v5
 
