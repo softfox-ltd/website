@@ -3,16 +3,14 @@
 # eu-west-1), as joue.softfox.com and safeguard.softfox.com are; these records
 # are copied from it. All under contact.*, per the naming rule in main.tf.
 
-# TODO: once contact.softfox.com is added in Resend, copy its DKIM value here
-# and uncomment.
-# resource "cloudflare_record" "resend_dkim" {
-#   zone_id = data.cloudflare_zone.softfox.id
-#   name    = "resend._domainkey.contact"
-#   type    = "TXT"
-#   content = "\"p=<from the Resend dashboard>\""
-#   ttl     = 300
-#   comment = "Resend DKIM for contact.softfox.com (website Terraform)"
-# }
+resource "cloudflare_record" "resend_dkim" {
+  zone_id = data.cloudflare_zone.softfox.id
+  name    = "resend._domainkey.contact"
+  type    = "TXT"
+  content = "\"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRqeE9DTNrcU4PRH/K2FOd+MyDqcyeiCRNsI33VcSs1lWDtvdIo3r6OzzIpowaBGxnSSdsdnBLFCm3/tXnCCEIkpG6wWKz2uL+gof5hiCUGCEGfQHjUVdyiwu9aEbGMvpl82CghMXfXuxMDMWcq5VFbq8OF8U9GhrBcxzpMZH93wIDAQAB\""
+  ttl     = 300
+  comment = "Resend DKIM for contact.softfox.com (website Terraform)"
+}
 
 # Sending and bounces: Resend points these at its own mail servers. Not
 # proxied: Cloudflare's proxy would hide the target and break them.
