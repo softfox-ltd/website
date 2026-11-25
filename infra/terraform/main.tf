@@ -70,11 +70,17 @@ resource "cloudflare_pages_project" "site" {
     }
   }
 
-  # wrangler records the output folder (wrangler.toml's
-  # pages_build_output_dir) on the project when it deploys. It doesn't matter
-  # for direct upload; ignoring it stops every plan from undoing it.
+  # wrangler.toml is the source of truth for everything but the secrets: each
+  # deploy writes its output folder, vars (FROM, NOTIFY_TO, PREVIEW) and
+  # usage model onto the project. Ignoring them stops every plan undoing that.
   lifecycle {
-    ignore_changes = [build_config]
+    ignore_changes = [
+      build_config,
+      deployment_configs[0].production[0].environment_variables,
+      deployment_configs[0].production[0].usage_model,
+      deployment_configs[0].preview[0].environment_variables,
+      deployment_configs[0].preview[0].usage_model,
+    ]
   }
 }
 
