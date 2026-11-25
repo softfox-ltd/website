@@ -20,7 +20,9 @@ Company website for Softfox Ltd (`softfox.com`). Leads with fractional CTO servi
 Identical to Softfox Safeguard's design system. All tokens live in `app/globals.css`. Do not introduce new colours or fonts outside that file.
 
 ## Deploy
-GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys to GitHub Pages on every push to `main`. Custom domain `softfox.com` is set via `public/CNAME`.
+- **Now:** GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys to GitHub Pages on every push to `main`. Custom domain `softfox.com` is set via `public/CNAME`.
+- **Moving to Cloudflare Pages**, as Joue is: `.github/workflows/site.yml` deploys to the `softfox` Pages project (previews on PRs) with the contact form's Function (`functions/api/contact.js`, Turnstile + Resend). Infrastructure in `infra/terraform` (setup and switch-over steps in its README).
+- The contact form is only on in the Cloudflare build (`NEXT_PUBLIC_CONTACT_FORM=on`); the GitHub Pages build keeps `mailto:` links. See `lib/site.ts`.
 
 ## GitHub workflow
 - **Never push directly to `main`.** Branch protection is enabled. Use `feature/*`, `fix/*`, or `chore/*` branches and open a PR via `gh pr create`.

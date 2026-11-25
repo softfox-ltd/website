@@ -14,3 +14,10 @@ out/
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
+
+# wrangler local secrets
+.dev.vars
+.wrangler/
+
+# Terraform working files (the lock file is committed)
+.terraform/
