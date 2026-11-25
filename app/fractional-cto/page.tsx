@@ -109,13 +109,21 @@ export default function FractionalCto() {
 
             <div>
               <h2 className={h2}>How it works</h2>
-              <p className={`${prose} mb-6`}>
+              <p className={`${prose} mb-4`}>
                 Softfox works as part of{' '}
                 <Ext href={FREEMAN_CLARKE_URL}>{FREEMAN_CLARKE_REGION}</Ext>.
-                Freeman Clarke engages with clients and handles invoicing;
-                Softfox delivers the service. It usually starts with a
-                conversation about where you are and what you&rsquo;re trying
-                to achieve.
+                Freeman Clarke is a network of nearly 100 experienced CIOs and
+                CTOs covering a wide range of disciplines. It also partners
+                with other national groups of fractional finance, marketing
+                and HR leaders.
+              </p>
+              <p className={`${prose} mb-6`}>
+                Being part of that network means clients get more than one
+                person&rsquo;s experience. When a question needs a specialist
+                view, in technology or beyond it, there is someone to bring in,
+                and Freeman Clarke&rsquo;s support helps Softfox give a better
+                service throughout. It usually starts with a conversation about
+                where you are and what you&rsquo;re trying to achieve.
               </p>
               <a
                 href={FREEMAN_CLARKE_URL}

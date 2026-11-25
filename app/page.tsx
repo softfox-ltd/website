@@ -168,7 +168,7 @@ export default function Home() {
                 <FreemanClarkeLogo className="h-12 w-auto" />
               </a>
               <p className="text-[15px] text-ink-soft leading-relaxed">
-                Softfox delivers its fractional CTO work as part of{' '}
+                Softfox is part of{' '}
                 <a
                   href={FREEMAN_CLARKE_URL}
                   target="_blank"
@@ -177,9 +177,12 @@ export default function Home() {
                 >
                   {FREEMAN_CLARKE_REGION}
                 </a>
-
-                . Freeman Clarke finds and looks after the client
-                relationship; Softfox delivers the work.{' '}
+                {'. '}
+                Freeman Clarke is a network of nearly 100 experienced CIOs
+                and CTOs across a wide range of disciplines, with partnerships
+                with national groups of fractional finance, marketing and HR
+                leaders. With that support behind it, Softfox can give clients
+                a broader, better service than one person working alone.{' '}
                 <Link href={FRACTIONAL_CTO_PATH} className={textLink}>
                   How a fractional CTO works
                 </Link>
