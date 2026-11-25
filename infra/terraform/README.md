@@ -20,19 +20,19 @@ Resend DNS records for `contact.softfox.com`. GitHub Actions deploys the site
    - secret `CLOUDFLARE_API_TOKEN`: the token above;
    - secret `TF_TOKEN_app_terraform_io`: an HCP Terraform team or user token
      (not an organization token, which can't run plans);
-   - variable `CLOUDFLARE_ACCOUNT_ID`: the account ID, which isn't secret.
-4. Merge, so Terraform applies. Then set the variable `TURNSTILE_SITE_KEY` to
-   `terraform output turnstile_site_key`.
-5. **Resend:** add the domain `contact.softfox.com` (EU). Copy its DKIM value into
-   `email.tf`, uncomment the record, and merge. Then verify the domain in Resend.
-6. **Function secrets** (or set them in the Pages dashboard), for production
-   and for preview:
-   ```
-   npx wrangler pages secret put RESEND_API_KEY --project-name=softfox
-   npx wrangler pages secret put TURNSTILE_SECRET --project-name=softfox
-   ```
-   `TURNSTILE_SECRET` is `terraform output -raw turnstile_secret`.
-7. Re-run the Site workflow, then try the form on `softfox.pages.dev/contact/`.
+   - variable `CLOUDFLARE_ACCOUNT_ID`: the account ID, which isn't secret;
+   - secret `RESEND_API_KEY`: a Resend key with sending access only, for
+     `contact.softfox.com`. Terraform sets it on the Pages project.
+4. **Resend:** add the domain `contact.softfox.com` (EU), put its DKIM value in
+   `email.tf`, merge, then verify the domain in Resend.
+5. Merge, so Terraform applies. It sets the Function's secrets
+   (`RESEND_API_KEY`, and `TURNSTILE_SECRET` from the widget) on the Pages
+   project. The Turnstile site key is public and lives in `lib/site.ts`.
+6. Re-run the Site workflow, so a fresh deploy picks up the secrets, then try
+   the form on `softfox.pages.dev/contact/`.
+
+To rotate the Resend key: update the GitHub secret, then run the Terraform
+workflow (Actions › Terraform › Run workflow).
 
 ## Switching softfox.com over
 
@@ -50,7 +50,8 @@ keeps serving softfox.com with email links (`lib/site.ts`).
 
 ```
 printf 'RESEND_API_KEY=dry-run\nTURNSTILE_SECRET=1x0000000000000000000000000000000AA\n' > .dev.vars
-NEXT_PUBLIC_CONTACT_FORM=on npm run build && npx wrangler pages dev out
+NEXT_PUBLIC_CONTACT_FORM=on NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA npm run build
+npx wrangler pages dev out
 ```
 
 `dry-run` logs the email instead of sending it. The Turnstile values are

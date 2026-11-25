@@ -49,6 +49,27 @@ resource "cloudflare_pages_project" "site" {
   name              = "softfox"
   production_branch = "main"
 
+  # The contact form Function's secrets, for the live site and previews:
+  # Turnstile's from the widget below, Resend's from the GitHub secret
+  # RESEND_API_KEY (via TF_VAR_resend_api_key in terraform.yml). Plain
+  # settings (FROM, NOTIFY_TO, PREVIEW) stay in wrangler.toml.
+  deployment_configs {
+    production {
+      compatibility_date = "2026-10-19" # as wrangler.toml
+      secrets = {
+        RESEND_API_KEY   = var.resend_api_key
+        TURNSTILE_SECRET = cloudflare_turnstile_widget.contact.secret
+      }
+    }
+    preview {
+      compatibility_date = "2026-10-19"
+      secrets = {
+        RESEND_API_KEY   = var.resend_api_key
+        TURNSTILE_SECRET = cloudflare_turnstile_widget.contact.secret
+      }
+    }
+  }
+
   # wrangler records the output folder (wrangler.toml's
   # pages_build_output_dir) on the project when it deploys. It doesn't matter
   # for direct upload; ignoring it stops every plan from undoing it.
