@@ -1,0 +1,19 @@
+# softfox.com's Cloudflare Pages project, "softfox" (made by infra/terraform),
+# and what its Function (functions/api/contact.js) is bound to. Set up as
+# Joue's site is (softfox-joue site/wrangler.toml). Secrets are set with
+# wrangler pages secret put, never here: RESEND_API_KEY, TURNSTILE_SECRET.
+name = "softfox"
+pages_build_output_dir = "./out"
+compatibility_date = "2026-10-19"
+
+# The live site.
+[vars]
+FROM = "Softfox website <website@contact.softfox.com>"
+NOTIFY_TO = "hello@softfox.com"
+PREVIEW = "no"
+
+# Previews (each PR's own pages.dev address).
+[env.preview.vars]
+FROM = "Softfox website <website@contact.softfox.com>"
+NOTIFY_TO = "hello@softfox.com"
+PREVIEW = "yes"

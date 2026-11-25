@@ -5,9 +5,20 @@ export const CE_CERTIFICATE_URL =
   'https://registry.blockmarktech.com/certificates/6ae09d98-aa88-45d3-b7c9-803ebbbdaf1d/';
 export const CE_BADGE_WIDGET_URL = `${CE_CERTIFICATE_URL}widget/?tooltip_position=bottom_right&theme=transparent&hover=t`;
 
-// Every "Get in touch" link points here. The contact form will replace the
-// mailto link; change it in this one place.
-export const CONTACT_HREF = 'mailto:hello@softfox.com';
+export const CONTACT_EMAIL = 'hello@softfox.com';
+
+// Every "Get in touch" link points here. The contact form needs its Function
+// (functions/api/contact.js), which only Cloudflare Pages runs, so only the
+// Cloudflare build (.github/workflows/site.yml) turns the form on. The GitHub
+// Pages build keeps the email link until softfox.com moves to Cloudflare.
+export const CONTACT_FORM_ON = process.env.NEXT_PUBLIC_CONTACT_FORM === 'on';
+export const CONTACT_HREF = CONTACT_FORM_ON ? '/contact/' : `mailto:${CONTACT_EMAIL}`;
+
+// The contact form's Turnstile site key (public; infra/terraform's
+// turnstile_site_key output, set as the repo variable TURNSTILE_SITE_KEY).
+// Without it, Cloudflare's always-pass test key, for local work only.
+export const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 
 export const FREEMAN_CLARKE_URL = 'https://freemanclarke.com/';
 export const FREEMAN_CLARKE_REGION = 'Freeman Clarke West Midlands';

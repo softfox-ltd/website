@@ -1,0 +1,52 @@
+name: Site (Cloudflare Pages)
+
+# softfox.com on Cloudflare Pages, as joue.softfox.com is: a PR builds the
+# site and deploys a preview (its own pages.dev address, posted in the run's
+# summary); a merge to main deploys to the Pages project. The project is
+# Terraform's (infra/terraform); this only uploads to it, with the contact
+# form's Function (functions/). Until the switch-over, softfox.com itself is
+# still served by GitHub Pages (deploy.yml).
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run typecheck
+
+      # The Cloudflare build turns the contact form on (lib/site.ts).
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_CONTACT_FORM: 'on'
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.151.1'
+          command: pages deploy out --project-name=softfox --branch=${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }} --commit-hash=${{ github.sha }}
+
+      - name: Where it went
+        run: echo "Deployed to ${{ steps.deploy.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"
