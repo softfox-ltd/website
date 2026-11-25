@@ -48,6 +48,13 @@ resource "cloudflare_pages_project" "site" {
   account_id        = var.cloudflare_account_id
   name              = "softfox"
   production_branch = "main"
+
+  # wrangler records the output folder (wrangler.toml's
+  # pages_build_output_dir) on the project when it deploys. It doesn't matter
+  # for direct upload; ignoring it stops every plan from undoing it.
+  lifecycle {
+    ignore_changes = [build_config]
+  }
 }
 
 # Turnstile on the contact form: no puzzle for most people, a check for
