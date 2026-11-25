@@ -178,7 +178,7 @@ export default function Home() {
                   {FREEMAN_CLARKE_REGION}
                 </a>
                 {'. '}
-                Freeman Clarke is a network of nearly 100 experienced CIOs
+                Freeman Clarke is a national network of experienced CIOs
                 and CTOs across a wide range of disciplines, with partnerships
                 with national groups of fractional finance, marketing and HR
                 leaders. With that support behind it, Softfox can give clients

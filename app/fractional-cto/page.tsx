@@ -112,7 +112,7 @@ export default function FractionalCto() {
               <p className={`${prose} mb-4`}>
                 Softfox works as part of{' '}
                 <Ext href={FREEMAN_CLARKE_URL}>{FREEMAN_CLARKE_REGION}</Ext>.
-                Freeman Clarke is a network of nearly 100 experienced CIOs and
+                Freeman Clarke is a national network of experienced CIOs and
                 CTOs covering a wide range of disciplines. It also partners
                 with other national groups of fractional finance, marketing
                 and HR leaders.
