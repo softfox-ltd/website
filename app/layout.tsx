@@ -1,17 +1,21 @@
 import type { Metadata } from 'next';
-import { Source_Serif_4, Source_Sans_3 } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const sourceSerif = Source_Serif_4({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
+// Self-hosted (app/fonts, the latin subsets of Google Fonts' variable files,
+// SIL Open Font License) rather than next/font/google: Google Fonts sometimes
+// hands GitHub's runners font URLs that Next 14's loader can't parse, which
+// fails the build. Same fonts, weights and CSS variables as before.
+const sourceSerif = localFont({
+  src: './fonts/sourceserif4-latin.woff2',
+  weight: '200 900',
   variable: '--font-display',
   display: 'swap',
 });
 
-const sourceSans = Source_Sans_3({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
+const sourceSans = localFont({
+  src: './fonts/sourcesans3-latin.woff2',
+  weight: '200 900',
   variable: '--font-body',
   display: 'swap',
 });
