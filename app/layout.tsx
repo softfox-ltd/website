@@ -19,7 +19,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: 'Softfox',
   description:
-    'Softfox Ltd is a small IT consultancy for small businesses, and the maker of Safeguard — practical technology help, without the jargon.',
+    'Softfox provides fractional CTO services, specialising in AI strategy and agentic adoption, as part of Freeman Clarke West Midlands. Makers of Safeguard and Joue.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

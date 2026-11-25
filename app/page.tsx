@@ -1,28 +1,47 @@
 import Image from 'next/image';
-import { Server, Shield, ArrowRight } from 'lucide-react';
-import { Logo } from '@/components/logo';
+import Link from 'next/link';
+import { Compass, Workflow, Server, Shield, KeyboardMusic, ArrowRight } from 'lucide-react';
+import { SiteHeader, SiteFooter, CtaBand, buttonPrimary, buttonSecondary, textLink } from '@/components/site-chrome';
+import { FreemanClarkeLogo } from '@/components/freeman-clarke-logo';
+import { Testimonials } from '@/components/testimonials';
+import {
+  CE_CERTIFICATE_URL,
+  CE_BADGE_WIDGET_URL,
+  CONTACT_HREF,
+  FREEMAN_CLARKE_URL,
+  FREEMAN_CLARKE_REGION,
+  FRACTIONAL_CTO_PATH,
+} from '@/lib/site';
 
-// Softfox Ltd's Cyber Essentials certificate on the Blockmark registry. The
-// certificate page is the public verification record; the widget URL renders
-// the registry's live smart badge (transparent theme, tooltip on hover).
-const CE_CERTIFICATE_URL = 'https://registry.blockmarktech.com/certificates/6ae09d98-aa88-45d3-b7c9-803ebbbdaf1d/';
-const CE_BADGE_WIDGET_URL = `${CE_CERTIFICATE_URL}widget/?tooltip_position=bottom_right&theme=transparent&hover=t`;
+const card =
+  'bg-card border border-line rounded-lg p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)]';
+
+function CardIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="w-10 h-10 rounded-lg flex items-center justify-center mb-6"
+      style={{ backgroundColor: 'var(--secondary)' }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <p
+      className="text-[11px] font-medium uppercase tracking-wider mb-3"
+      style={{ color: 'var(--brand-highlight)' }}
+    >
+      {children}
+    </p>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      {/* Nav */}
-      <header className="sticky top-0 z-10 bg-background border-b border-line">
-        <div className="max-w-4xl mx-auto px-8 h-14 flex items-center justify-between">
-          <Logo size={22} />
-          <a
-            href="mailto:hello@softfox.com"
-            className="text-[13px] font-medium text-ink-soft hover:text-ink transition-colors"
-          >
-            Get in touch
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main>
         {/* Hero */}
@@ -45,97 +64,149 @@ export default function Home() {
             />
           </div>
 
-          {/* Content */}
           <div className="relative max-w-4xl mx-auto px-8 py-20">
             <p
               className="text-[11px] font-medium uppercase tracking-widest mb-6"
               style={{ color: 'var(--brand-highlight)' }}
             >
-              Softfox Ltd
+              Fractional CTO · Softfox Ltd
             </p>
-            <h1 className="text-4xl font-semibold text-ink leading-tight mb-6 max-w-[500px]">
-              Making good technology genuinely useful for small organisations.
+            <h1 className="text-4xl font-semibold text-ink leading-tight mb-6 max-w-[520px]">
+              Fractional CTO services, specialising in AI strategy and agentic
+              adoption.
             </h1>
-            <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-[440px]">
-              Softfox is a small IT consultancy that helps small businesses
-              turn technology into growth: smoother operations, clearer
-              insight and time back for the work that matters. Alongside
-              that work, we build our own products.
+            <p className="text-[17px] text-ink-soft leading-relaxed mb-10 max-w-[460px]">
+              Senior technology leadership for growing businesses, for as many
+              days as you need it rather than as a full-time hire. Delivered as
+              part of {FREEMAN_CLARKE_REGION}.
             </p>
-            <a
-              href="mailto:hello@softfox.com"
-              className="inline-flex items-center justify-center h-10 px-5 rounded-[4px] bg-primary text-primary-foreground text-[13px] font-medium hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              Get in touch
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a href={CONTACT_HREF} className={buttonPrimary}>
+                Get in touch
+              </a>
+              <Link href={FRACTIONAL_CTO_PATH} className={buttonSecondary}>
+                What is a fractional CTO?
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* What we do */}
+        {/* Fractional CTO services */}
         <section className="border-t border-line py-16">
           <div className="max-w-4xl mx-auto px-8">
             <h2 className="text-[11px] font-medium uppercase tracking-widest mb-4 text-ink-soft">
-              What we do
+              Fractional CTO services
             </h2>
             <p className="text-[16px] text-ink-soft leading-relaxed mb-10 max-w-xl">
-              Softfox Ltd has two sides: consultancy work with small businesses,
-              and the products we build ourselves.
+              Technology leadership at board level, with a specialism in
+              helping organisations decide where agentic AI makes sense and
+              then putting it to work.
             </p>
-            <div className="grid md:grid-cols-2 gap-6">
-
-              {/* IT Consultancy card */}
-              <div className="bg-card border border-line rounded-lg p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-6"
-                  style={{ backgroundColor: 'var(--secondary)' }}
-                >
-                  <Server size={18} className="text-primary" strokeWidth={1.5} />
-                </div>
-                <p
-                  className="text-[11px] font-medium uppercase tracking-wider mb-3"
-                  style={{ color: 'var(--brand-highlight)' }}
-                >
-                  Consultancy
-                </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className={card}>
+                <CardIcon>
+                  <Compass size={18} className="text-primary" strokeWidth={1.5} />
+                </CardIcon>
+                <Eyebrow>Agentic strategy</Eyebrow>
                 <h3 className="text-xl font-semibold text-ink mb-3">
-                  IT consultancy for small businesses
+                  Where AI fits
                 </h3>
                 <p className="text-[15px] text-ink-soft leading-relaxed">
-                  We work with small organisations as a trusted technology
-                  partner — the kind of help where the right software, a clearer
-                  process, or a well-built tool makes day-to-day work noticeably
-                  easier. We care about doing things properly: sensible
-                  architecture, security taken seriously (Softfox is{' '}
+                  Business strategy support to work out where agentic AI
+                  genuinely helps, where it doesn&rsquo;t, and how to adopt it
+                  safely.
+                </p>
+              </div>
+
+              <div className={card}>
+                <CardIcon>
+                  <Workflow size={18} className="text-primary" strokeWidth={1.5} />
+                </CardIcon>
+                <Eyebrow>Agentic design</Eyebrow>
+                <h3 className="text-xl font-semibold text-ink mb-3">
+                  Agents that do the work
+                </h3>
+                <p className="text-[15px] text-ink-soft leading-relaxed">
+                  Designing agent-based workflows that take over manual tasks,
+                  such as finance and bookkeeping work that used to be done by
+                  hand.
+                </p>
+              </div>
+
+              <div className={card}>
+                <CardIcon>
+                  <Server size={18} className="text-primary" strokeWidth={1.5} />
+                </CardIcon>
+                <Eyebrow>Technology leadership</Eyebrow>
+                <h3 className="text-xl font-semibold text-ink mb-3">
+                  The rest of the CTO role
+                </h3>
+                <p className="text-[15px] text-ink-soft leading-relaxed">
+                  Technology strategy, IT and systems, suppliers and security
+                  (Softfox is{' '}
                   <a
                     href={CE_CERTIFICATE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-hover underline underline-offset-2 transition-colors"
+                    className={textLink}
                   >
                     Cyber Essentials certified
                   </a>
-                  ), and solutions you can actually maintain.
+                  ), handled properly and explained in plain terms.
                 </p>
               </div>
+            </div>
 
-              {/* Safeguard card */}
-              <div className="bg-card border border-line rounded-lg p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-6"
-                  style={{ backgroundColor: 'var(--secondary)' }}
+            {/* Freeman Clarke */}
+            <div className={`${card} mt-6 flex flex-col sm:flex-row sm:items-center gap-6`}>
+              <a
+                href={FREEMAN_CLARKE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 text-ink hover:text-primary transition-colors"
+              >
+                <FreemanClarkeLogo className="h-12 w-auto" />
+              </a>
+              <p className="text-[15px] text-ink-soft leading-relaxed">
+                Softfox delivers its fractional CTO work as part of{' '}
+                <a
+                  href={FREEMAN_CLARKE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={textLink}
                 >
+                  {FREEMAN_CLARKE_REGION}
+                </a>
+
+                . Freeman Clarke finds and looks after the client
+                relationship; Softfox delivers the work.{' '}
+                <Link href={FRACTIONAL_CTO_PATH} className={textLink}>
+                  How a fractional CTO works
+                </Link>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <Testimonials />
+
+        {/* Products */}
+        <section className="border-t border-line py-16">
+          <div className="max-w-4xl mx-auto px-8">
+            <h2 className="text-[11px] font-medium uppercase tracking-widest mb-4 text-ink-soft">
+              Our products
+            </h2>
+            <p className="text-[16px] text-ink-soft leading-relaxed mb-10 max-w-xl">
+              Alongside client work, we build our own software.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className={`${card} flex flex-col`}>
+                <CardIcon>
                   <Shield size={18} className="text-primary" strokeWidth={1.5} />
-                </div>
-                <p
-                  className="text-[11px] font-medium uppercase tracking-wider mb-3"
-                  style={{ color: 'var(--brand-highlight)' }}
-                >
-                  Our first product
-                </p>
-                <h3 className="text-xl font-semibold text-ink mb-3">
-                  Safeguard
-                </h3>
-                <p className="text-[15px] text-ink-soft leading-relaxed mb-5">
+                </CardIcon>
+                <Eyebrow>Safeguarding</Eyebrow>
+                <h3 className="text-xl font-semibold text-ink mb-3">Safeguard</h3>
+                <p className="text-[15px] text-ink-soft leading-relaxed mb-5 flex-1">
                   A platform that helps voluntary youth performing-arts and
                   sports groups manage safeguarding and the child performance
                   licensing that comes with putting on shows.
@@ -149,6 +220,36 @@ export default function Home() {
                 </a>
               </div>
 
+              <div className={`${card} flex flex-col`}>
+                <CardIcon>
+                  <KeyboardMusic size={18} className="text-primary" strokeWidth={1.5} />
+                </CardIcon>
+                <div className="flex items-center gap-2 mb-3">
+                  <p
+                    className="text-[11px] font-medium uppercase tracking-wider"
+                    style={{ color: 'var(--brand-highlight)' }}
+                  >
+                    Theatre
+                  </p>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] border border-line text-ink-soft">
+                    Beta
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold text-ink mb-3">Joue</h3>
+                <p className="text-[15px] text-ink-soft leading-relaxed mb-5 flex-1">
+                  Keyboard rigs for the theatre that don&rsquo;t let you down.
+                  Joue plays a show&rsquo;s sounds on a Mac, patch by patch, and
+                  runs every plugin on its own, so if one fails the rest of the
+                  show plays on. Free while in beta.
+                </p>
+                <a
+                  href="https://joue.softfox.com"
+                  className="inline-flex items-center gap-1 text-[14px] font-medium text-primary hover:text-primary-hover transition-colors"
+                >
+                  Visit joue.softfox.com
+                  <ArrowRight size={15} strokeWidth={1.75} />
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -190,7 +291,7 @@ export default function Home() {
                       href={CE_CERTIFICATE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-primary-hover underline underline-offset-2 transition-colors"
+                      className={textLink}
                     >
                       Verify
                     </a>
@@ -202,61 +303,31 @@ export default function Home() {
                   Softfox Ltd was founded by Roger Foxcroft, who has spent three
                   decades building and leading technology teams &mdash;
                   delivering software platforms, engineering strategy, and
-                  change for organisations large and small. Softfox brings that
-                  experience to small businesses with a practical, people-first
-                  approach, explained in plain terms.
+                  change for organisations large and small. Today Roger works
+                  as a fractional CTO, part of {FREEMAN_CLARKE_REGION}, with a
+                  focus on helping businesses adopt AI and agents in ways that
+                  genuinely pay off.
                 </p>
                 <p className="text-[16px] text-ink-soft leading-relaxed">
-                  The same care goes into the products we build — starting with
-                  Safeguard, which helps voluntary youth groups manage
-                  safeguarding and child performance licensing. Whether it&rsquo;s
-                  consultancy or our own software, the aim is the same: good
-                  technology, done properly, that genuinely supports the people
-                  who rely on it.
+                  The same care goes into the products we build: Safeguard,
+                  which helps voluntary youth groups manage safeguarding and
+                  child performance licensing, and Joue, which runs keyboard
+                  rigs for theatre shows. Whether it&rsquo;s advisory work or
+                  our own software, the aim is the same: good technology, done
+                  properly, that genuinely supports the people who rely on it.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA band */}
-        <section className="border-t border-line py-16 bg-card">
-          <div className="max-w-4xl mx-auto px-8">
-            <h2 className="text-3xl font-semibold text-ink mb-4">
-              Let&rsquo;s talk.
-            </h2>
-            <p className="text-[16px] text-ink-soft leading-relaxed mb-8 max-w-md">
-              We&rsquo;re open to new consultancy clients and always happy to
-              hear about your organisation and what you&rsquo;re trying to
-              achieve. A conversation is the best place to start.
-            </p>
-            <a
-              href="mailto:hello@softfox.com"
-              className="inline-flex items-center justify-center h-10 px-5 rounded-[4px] bg-primary text-primary-foreground text-[13px] font-medium hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              Get in touch
-            </a>
-          </div>
-        </section>
+        <CtaBand
+          heading="Let’s talk."
+          body="Whether you’re weighing up AI, need a senior technology voice in the room, or just want a second opinion, a conversation is the best place to start."
+        />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-line py-8">
-        <div className="max-w-4xl mx-auto px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <Logo size={16} />
-          <p className="text-[13px] text-ink-soft">
-            &copy; 2026 Softfox Ltd. Registered in England and Wales, company number 17237777. ·{' '}
-            <a
-              href={CE_CERTIFICATE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-ink underline underline-offset-2 transition-colors"
-            >
-              Cyber Essentials certified
-            </a>
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

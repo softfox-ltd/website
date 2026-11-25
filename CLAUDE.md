@@ -1,7 +1,7 @@
 # CLAUDE.md — Softfox Website
 
 ## Project overview
-Placeholder company website for Softfox Ltd (`softfox.com`). Signposts IT Consultancy services and the upcoming Safeguard product. Deployed as a static site via GitHub Pages.
+Company website for Softfox Ltd (`softfox.com`). Leads with fractional CTO services (AI strategy and agentic adoption, delivered as part of Freeman Clarke West Midlands), then the Safeguard and Joue products. Deployed as a static site via GitHub Pages.
 
 ## Stack
 - **Framework:** Next.js 14, static export (`output: 'export'` → `out/`)
@@ -28,4 +28,5 @@ GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys to GitHub Pag
 
 ## Placeholder values to update before launch
 - Email: `hello@softfox.com` — grep-replace when confirmed
-- Safeguard card: remove "Coming soon" badge and add product URL when released
+- Testimonials: fill in quotes in `components/testimonials.tsx` (the strip stays hidden until one has a quote and name)
+- Joue card: remove the Beta tag when Joue leaves beta
