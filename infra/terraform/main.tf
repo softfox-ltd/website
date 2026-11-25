@@ -83,7 +83,7 @@ resource "cloudflare_pages_project" "site" {
 resource "cloudflare_turnstile_widget" "contact" {
   account_id = var.cloudflare_account_id
   name       = "softfox.com contact form"
-  domains    = ["softfox.com", "www.softfox.com", cloudflare_pages_project.site.subdomain]
+  domains    = ["softfox.com", "www.softfox.com", "softfox.pages.dev"] # the project's subdomain; spelled out, as the project needs this widget's secret
   mode       = "managed"
   region     = "world"
 }
